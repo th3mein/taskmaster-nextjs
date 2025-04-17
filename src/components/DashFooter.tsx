@@ -3,10 +3,6 @@ import { headers } from "next/headers";
 import { RiHome9Fill } from "react-icons/ri";
 
 const DashFooter = async ({ className }: { className: string }) => {
-  // const { username, status } = useAuth();
-  // const navigate = useNavigate();
-  // const { pathname } = useLocation();
-
   const { username, status } = await getToken();
   const headersList = await headers();
   const pathname = headersList.get("x-pathname") || "";
@@ -16,8 +12,6 @@ const DashFooter = async ({ className }: { className: string }) => {
     dateStyle: "full",
     timeStyle: "long",
   }).format(date);
-
-  // const onGoHomeClicked = () => navigate("/dash");
 
   let goHomeButton = null;
   if (pathname !== "/dash") {
@@ -29,7 +23,6 @@ const DashFooter = async ({ className }: { className: string }) => {
           href="/dash"
         >
           <RiHome9Fill width={24} height={24} />
-          {/* <FontAwesomeIcon icon={faHouse} /> */}
         </a>
       </p>
     );

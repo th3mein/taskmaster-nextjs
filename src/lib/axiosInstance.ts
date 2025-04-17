@@ -16,8 +16,6 @@ export const ax = axios.create({
 
 ax.interceptors.response.use(
   function (response) {
-    console.log(":::::::::::::", API_ENDPOINT);
-
     // Convert Axios response to NextResponse
     const nextResponse = NextResponse.json(response.data, {
       status: response.status,

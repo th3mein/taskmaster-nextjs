@@ -4,7 +4,7 @@ import axios from "axios";
 
 const API_ENDPOINT = process.env.API_ENDPOINT;
 
-export async function POST() {
+export async function POST(): Promise<NextResponse> {
   try {
     const jwt = await getRefreshToken();
     const res = await axios.post(
@@ -27,6 +27,6 @@ export async function POST() {
     return nextResponse;
   } catch (error) {
     console.log(error);
-    return error;
+    return NextResponse.json({ message: "Logout failed" }, { status: 401 });
   }
 }

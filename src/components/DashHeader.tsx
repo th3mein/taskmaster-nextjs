@@ -1,18 +1,8 @@
 import { headers } from "next/headers";
-
-// import { useEffect } from "react";
-// import { useNavigate, useLocation } from "react-router-dom";
-
-// import { useSendLogoutMutation } from "../features/auth/authApiSlice";
-
-// import useAuth from "../hooks/useAuth";
 import { HiMiniUser, HiMiniUserPlus } from "react-icons/hi2";
 import { MdNote, MdNoteAdd } from "react-icons/md";
 import { getToken } from "@/lib/session";
 import LogoutButton from "./LogoutButton";
-// import { useRouter } from "next/navigation";
-
-// const DASH_REGEX = /^\/dash(\/)?$/;
 const TICKETS_REGEX = /^\/dash\/tickets(\/)?$/;
 const USERS_REGEX = /^\/dash\/users(\/)?$/;
 
@@ -23,33 +13,7 @@ const DashHeader = async () => {
 
   const pathname = headersList.get("x-pathname") || "/dash";
 
-  // const router = useRouter();
-  // const navigate = useNavigate();
-  // const { pathname } = useLocation();
-
-  // const [sendLogout, { isLoading, isSuccess, isError, error }] =
-  //   useSendLogoutMutation();
-
-  // useEffect(() => {
-  //   if (isSuccess) navigate("/");
-  // }, [isSuccess, navigate]);
-
-  // const onNewNoteClicked = () => router.push("/dash/tickets/new");
-  // const onNewUserClicked = () => router.push("/dash/users/new");
-  // const onTicketsClicked = () => router.push("/dash/tickets");
-  // const onUsersClicked = () => router.push("/dash/users");
-
-  // let dashClass = null;
-  // if (
-  //   !DASH_REGEX.test(pathname) &&
-  //   !TICKETS_REGEX.test(pathname) &&
-  //   !USERS_REGEX.test(pathname)
-  // ) {
-  //   dashClass = "dash-header__container--small";
-  // }
-
   const isLoading = false; // isLoading;
-  // const isError = false; // isError;
   let newTicketButton = null;
   if (TICKETS_REGEX.test(pathname)) {
     newTicketButton = (
@@ -106,8 +70,6 @@ const DashHeader = async () => {
     );
   }
 
-  // const errClass = isError ? "errmsg" : "offscreen";
-
   let buttonContent;
   if (isLoading) {
     buttonContent = <p>Logging Out...</p>;
@@ -125,14 +87,6 @@ const DashHeader = async () => {
 
   const content = (
     <>
-      {/* {isError && (
-        <p className={errClass}>
-          Error:{" "}
-          {"data" in error ? `Error: ${error.data}` : "An error occurred"}
-        </p>
-      )} */}
-      {/* <p className={errClass}>{error?.data?.message}</p> */}
-
       <header>
         <nav className="text-right p-4 flex flex-row justify-end cursor-pointer mr-4">
           {buttonContent}
